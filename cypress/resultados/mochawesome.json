@@ -1,0 +1,132 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 0,
+    "pending": 0,
+    "failures": 2,
+    "start": "2026-10-28T03:03:31.995Z",
+    "end": "2026-10-28T03:08:12.507Z",
+    "duration": 280512,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b11e637a-7ed3-4be0-8656-d94435c1f2ce",
+      "title": "",
+      "fullFile": "cypress\\e2e\\pedidos.js",
+      "file": "cypress\\e2e\\pedidos.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "046b2a44-449d-4a75-9c68-cf97b81fad34",
+          "title": "Pedidos - casos de teste 15 e 16",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "CT 15 - realiza pedido após cadastro antes do checkout",
+              "fullTitle": "Pedidos - casos de teste 15 e 16 CT 15 - realiza pedido após cadastro antes do checkout",
+              "timedOut": null,
+              "duration": 43352,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "createAndOrder(false)",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `a[href=\"/checkout\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `a[href=\"/checkout\"]`, but never found it.\n    at Context.eval (webpack://automationexercise-cypress/./cypress/support/commands.js:57:5)",
+                "diff": null
+              },
+              "uuid": "e456364d-2fda-47e7-bca6-9c233c613935",
+              "parentUUID": "046b2a44-449d-4a75-9c68-cf97b81fad34",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "CT 16 - realiza pedido após login antes do checkout",
+              "fullTitle": "Pedidos - casos de teste 15 e 16 CT 16 - realiza pedido após login antes do checkout",
+              "timedOut": null,
+              "duration": 59229,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "createAndOrder(true)",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `a[href=\"/checkout\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `a[href=\"/checkout\"]`, but never found it.\n    at Context.eval (webpack://automationexercise-cypress/./cypress/support/commands.js:57:5)",
+                "diff": null
+              },
+              "uuid": "20e1ff81-aed8-46f2-a957-d3112e0ae302",
+              "parentUUID": "046b2a44-449d-4a75-9c68-cf97b81fad34",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "e456364d-2fda-47e7-bca6-9c233c613935",
+            "20e1ff81-aed8-46f2-a957-d3112e0ae302"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 102581,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/resultados",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

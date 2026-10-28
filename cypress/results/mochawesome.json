@@ -1,0 +1,186 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 4,
+    "pending": 0,
+    "failures": 1,
+    "start": "2026-10-28T02:10:44.806Z",
+    "end": "2026-10-28T02:14:34.198Z",
+    "duration": 229392,
+    "testsRegistered": 5,
+    "passPercent": 80,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e8094d6d-2e7a-4404-b7f6-38906b4ef447",
+      "title": "",
+      "fullFile": "cypress\\e2e\\authentication.cy.js",
+      "file": "cypress\\e2e\\authentication.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4d326d01-ec34-47c0-b4da-6ea9a97af47f",
+          "title": "Authentication - test cases 1, 2, 3, 4 and 5",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "TC 1 - registers and deletes a user",
+              "fullTitle": "Authentication - test cases 1, 2, 3, 4 and 5 TC 1 - registers and deletes a user",
+              "timedOut": null,
+              "duration": 22694,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.goHome();\ncy.assertHome();\ncy.openLogin();\ncy.contains('New User Signup!').should('be.visible');\ncy.registerUser().then(() => cy.deleteAccount());",
+              "err": {},
+              "uuid": "c96f77da-fb7a-4e99-a5e9-c5ffd4674cea",
+              "parentUUID": "4d326d01-ec34-47c0-b4da-6ea9a97af47f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC 2 - logs in with valid credentials",
+              "fullTitle": "Authentication - test cases 1, 2, 3, 4 and 5 TC 2 - logs in with valid credentials",
+              "timedOut": null,
+              "duration": 38969,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.goHome();\ncy.openLogin();\ncy.registerUser({\n  password\n}).then(user => {\n  cy.get('a[href=\"/logout\"]').click();\n  cy.openLogin();\n  cy.login(user.email, password);\n  cy.contains('Logged in as').should('be.visible');\n  cy.deleteAccount();\n});",
+              "err": {},
+              "uuid": "d75904ed-a8ed-497c-b13a-c7a135cfccf6",
+              "parentUUID": "4d326d01-ec34-47c0-b4da-6ea9a97af47f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC 3 - rejects invalid credentials",
+              "fullTitle": "Authentication - test cases 1, 2, 3, 4 and 5 TC 3 - rejects invalid credentials",
+              "timedOut": null,
+              "duration": 9392,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.goHome();\ncy.openLogin();\ncy.contains('Login to your account').should('be.visible');\ncy.login(`invalid_${Date.now()}@example.com`, 'wrong-password');\ncy.contains('Your email or password is incorrect!').should('be.visible');",
+              "err": {},
+              "uuid": "6a800ec9-cf0a-44bb-a81f-17531410f902",
+              "parentUUID": "4d326d01-ec34-47c0-b4da-6ea9a97af47f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC 4 - logs out an authenticated user",
+              "fullTitle": "Authentication - test cases 1, 2, 3, 4 and 5 TC 4 - logs out an authenticated user",
+              "timedOut": null,
+              "duration": 37601,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.goHome();\ncy.openLogin();\ncy.registerUser({\n  password\n}).then(user => {\n  cy.get('a[href=\"/logout\"]').click();\n  cy.url().should('include', '/login');\n  cy.login(user.email, password);\n  cy.get('a[href=\"/delete_account\"]').click();\n  cy.contains('Account Deleted!').should('be.visible');\n});",
+              "err": {},
+              "uuid": "7b04f7c8-13c2-443a-be96-5137227706eb",
+              "parentUUID": "4d326d01-ec34-47c0-b4da-6ea9a97af47f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC 5 - rejects an already registered email",
+              "fullTitle": "Authentication - test cases 1, 2, 3, 4 and 5 TC 5 - rejects an already registered email",
+              "timedOut": null,
+              "duration": 36456,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.goHome();\ncy.openLogin();\ncy.registerUser().then(user => {\n  cy.get('a[href=\"/delete_account\"]').click();\n  cy.contains('Account Deleted!').should('be.visible');\n  cy.openLogin();\n  cy.get('[data-qa=\"signup-name\"]').type('Existing User');\n  cy.get('[data-qa=\"signup-email\"]').type(user.email);\n  cy.get('[data-qa=\"signup-button\"]').click();\n  cy.contains('Email Address already exist!').should('be.visible');\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find content: 'Email Address already exist!' but never did.",
+                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find content: 'Email Address already exist!' but never did.\n    at Context.eval (webpack://automationexercise-cypress/./cypress/e2e/authentication.cy.js:33:95)",
+                "diff": null
+              },
+              "uuid": "d74f6394-0a8b-4a2c-8bce-52f79a2cc193",
+              "parentUUID": "4d326d01-ec34-47c0-b4da-6ea9a97af47f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c96f77da-fb7a-4e99-a5e9-c5ffd4674cea",
+            "d75904ed-a8ed-497c-b13a-c7a135cfccf6",
+            "6a800ec9-cf0a-44bb-a81f-17531410f902",
+            "7b04f7c8-13c2-443a-be96-5137227706eb"
+          ],
+          "failures": [
+            "d74f6394-0a8b-4a2c-8bce-52f79a2cc193"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 145112,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

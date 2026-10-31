@@ -6,6 +6,7 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "test": "cypress run",
+    "report:clean": "node scripts/limpar-relatorios.js",
     "report:merge": "mochawesome-merge cypress/resultados/*.json > cypress/resultados/unificado.json",
     "report:generate": "marge cypress/resultados/unificado.json -f relatorio -o cypress/relatorios"
   },

@@ -16,6 +16,8 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      - name: Limpar resultados anteriores
+        run: npm run report:clean
       - run: npx cypress run
       - if: always()
         run: npm run report:merge && npm run report:generate

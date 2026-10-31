@@ -20,7 +20,14 @@ jobs:
       - if: always()
         run: npm run report:merge && npm run report:generate
       - if: always()
+        name: Publicar resumo detalhado no GitHub Actions
+        run: node scripts/resumo-relatorio.js
+      - if: always()
         uses: actions/upload-artifact@v4
         with:
           name: relatorios-cypress
-          path: cypress/{relatorios,screenshots,resultados}
+          path: |
+            cypress/relatorios
+            cypress/resultados
+            cypress/screenshots
+          if-no-files-found: warn
